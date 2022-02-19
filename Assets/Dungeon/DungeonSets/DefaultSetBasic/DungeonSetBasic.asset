@@ -1,0 +1,55 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ad6747669dfb8f4b8df7c23d94ff122, type: 3}
+  m_Name: DungeonSetBasic
+  m_EditorClassIdentifier: 
+  LTCornerTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 39598abdb2f22444bae6a9a57a0dea36, type: 2}
+    Variable: {fileID: 0}
+  LWallTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 6d02c76b2a713ac41bead23f8be698c2, type: 2}
+    Variable: {fileID: 0}
+  LBCornerTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 01f0a65c224b9ba4ab144409bb00664c, type: 2}
+    Variable: {fileID: 0}
+  MTWallTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 718c3b4ee142ad0459d631d121292011, type: 2}
+    Variable: {fileID: 0}
+  floorTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 168859c45acae5e4ea9cf889c0b9c0cb, type: 2}
+    Variable: {fileID: 0}
+  MBWallTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 5ac4146fd5689724c82a223cdeb4f22d, type: 2}
+    Variable: {fileID: 0}
+  RTCornerTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 67a3fcfcbb098a74eaaa4d40b19bd569, type: 2}
+    Variable: {fileID: 0}
+  RWallTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: a074ca87e25f7c8428c6114ee0464b01, type: 2}
+    Variable: {fileID: 0}
+  RBCornerTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 43df80d58db859340bad80d14b6ff0f2, type: 2}
+    Variable: {fileID: 0}
+  VoidTile:
+    UseConstant: 0
+    ConstantValue: {fileID: 0}
+    Variable: {fileID: 11400000, guid: 2c924eb2d932fa24e9532bf8b2aec7b7, type: 2}
+  DungeonSpecificTiles: []
