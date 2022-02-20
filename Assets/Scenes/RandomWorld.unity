@@ -292,13 +292,16 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 6b5aacd0783d65744ad5b2c5bcde9b72, type: 2}
   perlinScale:
     UseConstant: 1
-    ConstantValue: 5
+    ConstantValue: 7
     Variable: {fileID: 0}
   treshhold:
     UseConstant: 1
-    ConstantValue: 0.5
+    ConstantValue: 0.2
     Variable: {fileID: 0}
   possibleTiles: {fileID: 11400000, guid: 3b3ed6e3790ab534989e290e7bfa696f, type: 2}
+  falloffMap: {fileID: 2800000, guid: ff1a207fa6534d743ab9768c568bc364, type: 3}
+  seed: 0
+  generateSeedOnRoomGeneration: 1
 --- !u!1 &723189154
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,6 +13,9 @@ public class RoomGenerator : MonoBehaviour
     public FloatReference perlinScale;
     public FloatReference treshhold;
     public TileCollection possibleTiles;
+    public Texture2D falloffMap;
+    public float seed = 0;
+    public bool generateSeedOnRoomGeneration = false;
     private List<GameTileController> tiles = new List<GameTileController>();
 
     void Start()
@@ -36,6 +39,10 @@ public class RoomGenerator : MonoBehaviour
 
     void GenerateRoom()
     {
+        if(generateSeedOnRoomGeneration)
+        {
+            seed = Random.Range(0, 9999f);
+        }
         for(int i = tiles.Count - 1; i > -1; i--)
         {
             Destroy(tiles[i].gameObject);
@@ -148,6 +155,6 @@ public class RoomGenerator : MonoBehaviour
 
     public bool SampleTile(int x, int y)
     {
-        return Mathf.PerlinNoise(x / (float)roomWidth * perlinScale, y / (float)roomHeight * perlinScale) > treshhold; //Multiply this with 1 minus the distance of the center normalized with the map width or something like that
+        return Mathf.PerlinNoise((seed + x) / (float)roomWidth * perlinScale,(seed + y) / (float)roomHeight * perlinScale) * falloffMap.GetPixelBilinear(x/(float)roomWidth,y/(float)roomHeight).r > treshhold; //Multiply this with 1 minus the distance of the center normalized with the map width or something like that
     }
 }
