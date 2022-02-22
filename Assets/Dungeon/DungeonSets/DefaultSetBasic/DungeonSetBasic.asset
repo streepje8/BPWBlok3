@@ -48,6 +48,30 @@ MonoBehaviour:
     UseConstant: 1
     ConstantValue: {fileID: 11400000, guid: 43df80d58db859340bad80d14b6ff0f2, type: 2}
     Variable: {fileID: 0}
+  SoloUpTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 2938bd8bb5a0edb44ab292bef633cfdc, type: 2}
+    Variable: {fileID: 0}
+  SoloRightTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: f4ffd5f39d8cb704aa03acbb34600090, type: 2}
+    Variable: {fileID: 0}
+  SoloDownTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: be2fd342006d0b645b1f4d03ebb1e395, type: 2}
+    Variable: {fileID: 0}
+  SoloLeftTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: c9e8cb2313bae024fb4a8454fd900f29, type: 2}
+    Variable: {fileID: 0}
+  StartTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 0b68669bb2791964d82c67a21ed828d5, type: 2}
+    Variable: {fileID: 0}
+  EndTile:
+    UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 64a3193ba6b6c184eb448d91de8f8d84, type: 2}
+    Variable: {fileID: 0}
   VoidTile:
     UseConstant: 0
     ConstantValue: {fileID: 0}

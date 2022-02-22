@@ -9,6 +9,8 @@ public class GameTile : ScriptableObject
     public Texture2D texture;
     public GameEvent tileEvent;
     public float rarity;
+    public bool isWalkable = true;
+    public bool CanBeEndOrStartTile = false;
 
     public void triggerTile()
     {

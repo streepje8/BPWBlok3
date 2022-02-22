@@ -8,15 +8,15 @@ public class RoomGenerator : MonoBehaviour
 {
     public GameEvent roomGenerated;
     public GameObject tilePrefab;
+    public DungeonGenerator generator;
     public IntReference roomWidth;
     public IntReference roomHeight;
-    public FloatReference perlinScale;
-    public FloatReference treshhold;
     public TileCollection possibleTiles;
-    public Texture2D falloffMap;
+    public Vector3Reference startingPosition;
+    public Vector3Reference endingPosition;
     public float seed = 0;
     public bool generateSeedOnRoomGeneration = false;
-    private List<GameTileController> tiles = new List<GameTileController>();
+    private GameTileController[,] tiles;
 
     void Start()
     {
@@ -31,7 +31,7 @@ public class RoomGenerator : MonoBehaviour
         temp += Time.deltaTime;
         if(temp > 1)
         {
-            GenerateRoom();
+            //GenerateRoom();
             Debug.Log("New Room boi");
             temp = 0;
         }
@@ -43,18 +43,27 @@ public class RoomGenerator : MonoBehaviour
         {
             seed = Random.Range(0, 9999f);
         }
-        for(int i = tiles.Count - 1; i > -1; i--)
-        {
-            Destroy(tiles[i].gameObject);
-            tiles.Remove(tiles[i]);
+        if(tiles != null) { 
+            for(int x = 0; x < tiles.GetLength(0); x++)
+            {
+                for(int y = 0; y < tiles.GetLength(1); y++)
+                {
+                    Destroy(tiles[x, y].gameObject);
+                }
+            }
         }
+        tiles = new GameTileController[roomWidth, roomHeight];
+        generator.seed = seed;
+        generator.roomWidth = roomWidth;
+        generator.roomHeight = roomHeight;
         for (int x = 0; x < roomWidth; x++)
         {
             for (int y = 0; y < roomHeight; y++)
             {
                 bool isFloor = SampleTile(x, y);
                 GameTileController tile = Instantiate(tilePrefab, new Vector3(x, 0, y), Quaternion.identity).GetComponent<GameTileController>();
-                tiles.Add(tile);
+                tile.transform.Rotate(new Vector3(90, 0, 180));
+                tiles[x, y] = tile;
                 tile.GetComponent<GameEventListener>().Event = roomGenerated;
                 if (isFloor)
                 {
@@ -88,6 +97,18 @@ public class RoomGenerator : MonoBehaviour
                         case 0xA:
                             tile.type = possibleTiles.RBCornerTile;
                             break;
+                        case 0x1:
+                            tile.type = possibleTiles.SoloRightTile;
+                            break;
+                        case 0x2:
+                            tile.type = possibleTiles.SoloUpTile;
+                            break;
+                        case 0x4:
+                            tile.type = possibleTiles.SoloDownTile;
+                            break;
+                        case 0x8:
+                            tile.type = possibleTiles.SoloLeftTile;
+                            break;
                         default:
                             tile.type = possibleTiles.VoidTile;
                             break;
@@ -100,12 +121,17 @@ public class RoomGenerator : MonoBehaviour
                 }
             }
         }
+        Vector2Int startTile = generator.GetStartTile(tiles);
+        tiles[startTile.x, startTile.y].type = possibleTiles.StartTile;
+        startingPosition.Value = new Vector3(startTile.x, 0, startTile.y);
+        Vector2Int endTile = generator.GetEndTile(tiles);
+        tiles[endTile.x, endTile.y].type = possibleTiles.EndTile;
         roomGenerated.Raise();
     }
 
     public byte boolArrayToSampleByte(bool[][] sampleArray) {
-        byte result = 00000000;
-        byte mask = 00000001;
+        byte result = 0x0;
+        byte mask = 0x1;
         for(int x = 0; x < 3; x++)
         {
             for(int y = 0; y < 3; y++)
@@ -123,8 +149,8 @@ public class RoomGenerator : MonoBehaviour
 
     public byte boolArrayToSampleByteZeroCorners(bool[][] sampleArray)
     {
-        byte result = 00000000;
-        byte mask = 00000001;
+        byte result = 0x0;
+        byte mask = 0x1;
         for (int x = 0; x < 3; x++)
         {
             for (int y = 0; y < 3; y++)
@@ -155,6 +181,6 @@ public class RoomGenerator : MonoBehaviour
 
     public bool SampleTile(int x, int y)
     {
-        return Mathf.PerlinNoise((seed + x) / (float)roomWidth * perlinScale,(seed + y) / (float)roomHeight * perlinScale) * falloffMap.GetPixelBilinear(x/(float)roomWidth,y/(float)roomHeight).r > treshhold; //Multiply this with 1 minus the distance of the center normalized with the map width or something like that
+        return generator.SampleTile(x, y);
     }
 }
