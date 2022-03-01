@@ -10,4 +10,13 @@ public class PlayerController : MonoBehaviour
     {
         transform.position = startingPosition;
     }
+
+    public void onTurn()
+    {
+        //Do something
+
+
+        //Finish turn
+        TurnManager.Instance.nextTurn();
+    }
 }

@@ -28,13 +28,15 @@ public class RoomGenerator : MonoBehaviour
     private void Update()
     {
         //Debug
+        /*
         temp += Time.deltaTime;
         if(temp > 1)
         {
-            //GenerateRoom();
+            GenerateRoom();
             Debug.Log("New Room boi");
             temp = 0;
         }
+        */
     }
 
     void GenerateRoom()
