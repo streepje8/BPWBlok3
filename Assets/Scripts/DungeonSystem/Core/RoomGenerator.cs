@@ -23,7 +23,7 @@ public class RoomGenerator : MonoBehaviour
         GenerateRoom();
     }
 
-    float temp = 0;
+    //float temp = 0;
 
     private void Update()
     {
