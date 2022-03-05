@@ -8,6 +8,8 @@ public class GameTileController : MonoBehaviour
     public byte NeighborCode;
     private Material myMaterial;
 
+    [HideInInspector]public bool containsEntity = false;
+
     public void roomGenerated()
     {
         if(myMaterial == null)

@@ -76,4 +76,7 @@ MonoBehaviour:
     UseConstant: 0
     ConstantValue: {fileID: 0}
     Variable: {fileID: 11400000, guid: 2c924eb2d932fa24e9532bf8b2aec7b7, type: 2}
-  DungeonSpecificTiles: []
+  DungeonSpecificTiles:
+  - UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: f729ecef5049cca4ab504a32659d5fc8, type: 2}
+    Variable: {fileID: 0}
