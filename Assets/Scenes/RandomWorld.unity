@@ -398,7 +398,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   roomGenerated: {fileID: 11400000, guid: dc269b76a32b49242afd3e4e64e3dd16, type: 2}
   tilePrefab: {fileID: 4324761414974487610, guid: 42d2bb81c53cb4b42a5b9a14284bd8b8, type: 3}
-  generator: {fileID: 11400000, guid: 68af9f4ba8cbe1d4a963c4fc2ce72e09, type: 2}
+  generator: {fileID: 11400000, guid: 5752e1acf4cb3ef41864018ebeb94f4a, type: 2}
   roomWidth:
     UseConstant: 0
     ConstantValue: 200

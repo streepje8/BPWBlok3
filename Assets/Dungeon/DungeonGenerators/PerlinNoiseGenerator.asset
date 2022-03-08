@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9375fc3c9c3d7e44af2ef008ff8ed99, type: 3}
   m_Name: PerlinNoiseGenerator
   m_EditorClassIdentifier: 
-  seed: 0
-  roomWidth: 0
-  roomHeight: 0
+  seed: 7148.365
+  roomWidth: 50
+  roomHeight: 50
   perlinScale:
     UseConstant: 1
     ConstantValue: 5
