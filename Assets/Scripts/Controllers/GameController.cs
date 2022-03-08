@@ -8,7 +8,7 @@ public class GameController : Singleton<GameController>
     public PlayerController player;
     public Transform cameraTarget;
     public FollowTarget followTarget;
-
+    public Transform dollyParent;
 
     private void Update()
     {

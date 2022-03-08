@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowTarget : MonoBehaviour
 {
     public Transform target;
-    public float distanceOfPlayer = 5f;
+    public float distanceOfPlayer = 10f;
     public bool Smooth;
 
     void Update()

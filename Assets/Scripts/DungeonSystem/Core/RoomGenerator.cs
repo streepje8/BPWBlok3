@@ -24,19 +24,19 @@ public class RoomGenerator : MonoBehaviour
         GenerateRoom();
     }
 
-    float temp = 0;
+    //float temp = 0;
 
     private void Update()
     {
         //Debug
         
-        temp += Time.deltaTime;
-        if(temp > 0.5)
-        {
-            GenerateRoom();
-            Debug.Log("New Room boi");
-            temp = 0;
-        }
+        //temp += Time.deltaTime;
+        //if(temp > 0.5)
+        //{
+        //    GenerateRoom();
+        //    Debug.Log("New Room boi");
+        //    temp = 0;
+        //}
         
     }
 

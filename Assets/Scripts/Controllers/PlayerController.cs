@@ -9,12 +9,14 @@ public class PlayerController : MonoBehaviour
     [Header("Variables")]
     public Vector3Reference startingPosition;
     public bool isMyTurn = false;
+    public float timeBetweenSteps = 0.1f;
+    public float deadZone = 0.1f;
 
     [Header("Events")]
     public GameEvent playerTurnStartEvent;
     public GameEvent playerTurnEndEvent;
 
-    private bool walkReleased = true;
+    private float walkCooldown = 0f;
     [HideInInspector]public Vector2Int currentPosition2D;
 
     public void GoToStartingPosition()
@@ -26,49 +28,53 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if ((Mathf.Abs(Input.GetAxis("Horizontal")) < 0.001f) && (Mathf.Abs(Input.GetAxis("Vertical")) < 0.001f))
-        {
-            walkReleased = true;
-        }
+        Vector3 input = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
+        input = GameController.Instance.dollyParent.rotation * input;
+        Debug.DrawLine(transform.position, transform.position + input * 10);
+        float Horizontal = input.x;
+        float Vertical = input.z;
         switch(FaseManager.Instance.currentFase)
         {
             case GameFase.WALK:
-                if (walkReleased)
+                if (walkCooldown <= 0)
                 {
                     GameController.Instance.roomGenerator.setContainsEntity(currentPosition2D.x, currentPosition2D.y, false);
-                    if (Input.GetAxis("Horizontal") > 0)
+                    if (Horizontal > deadZone)
                     {
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x + 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(1, 0);
                         }
-                        walkReleased = false;
+                        walkCooldown = timeBetweenSteps;
                     }
-                    if (Input.GetAxis("Horizontal") < 0)
+                    if (Horizontal < -deadZone)
                     {
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x - 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(-1, 0);
                         }
-                        walkReleased = false;
+                        walkCooldown = timeBetweenSteps;
                     }
-                    if (Input.GetAxis("Vertical") > 0)
+                    if (Vertical > deadZone)
                     {
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y + 1))
                         {
                             currentPosition2D += new Vector2Int(0, 1);
                         }
-                        walkReleased = false;
+                        walkCooldown = timeBetweenSteps;
                     }
-                    if (Input.GetAxis("Vertical") < 0)
+                    if (Vertical < -deadZone)
                     {
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y - 1))
                         {
                             currentPosition2D += new Vector2Int(0, -1);
                         }
-                        walkReleased = false;
+                        walkCooldown = timeBetweenSteps;
                     }
                     GameController.Instance.roomGenerator.setContainsEntity(currentPosition2D.x, currentPosition2D.y, true);
+                } else
+                {
+                    walkCooldown -= Time.deltaTime;
                 }
                 break;
             case GameFase.INTERACT:

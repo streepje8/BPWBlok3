@@ -21,4 +21,9 @@ public class ItemStack
         this.type = type;
         count = 1;
     }
+
+    public void Drop(Vector3 position)
+    {
+        type.Drop(this, position);
+    }
 }
