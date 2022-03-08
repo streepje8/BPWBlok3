@@ -2,6 +2,7 @@ using Openverse.Events;
 using Openverse.Variables;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RoomGenerator : MonoBehaviour
@@ -16,7 +17,7 @@ public class RoomGenerator : MonoBehaviour
     public Vector3Reference endingPosition;
     public float seed = 0;
     public bool generateSeedOnRoomGeneration = false;
-    private GameTileController[,] tiles;
+    [HideInInspector]public GameTileController[,] tiles;
 
     void Start()
     {
@@ -37,6 +38,21 @@ public class RoomGenerator : MonoBehaviour
             temp = 0;
         }
         
+    }
+
+    public bool isWalkable(int x, int y)
+    {
+        return tiles[x, y].type.isWalkable;
+    }
+
+    public bool isWalkableAndFree(int x, int y)
+    {
+        return tiles[x, y].type.isWalkable && !(tiles[x,y].containsEntity);
+    }
+
+    public void setContainsEntity(int x, int y, bool value)
+    {
+        tiles[x, y].containsEntity = value;
     }
 
     void GenerateRoom()
@@ -86,6 +102,18 @@ public class RoomGenerator : MonoBehaviour
                             break;
                         case 0xF:
                             tile.type = possibleTiles.floorTile;
+                            List<GameTileReference> shuffeledTiles = possibleTiles.DungeonSpecificTiles.OrderBy(a => Random.Range(0, 50)).ToList();
+                            foreach (GameTileReference rngTile in shuffeledTiles)
+                            {
+                                if (Mathf.RoundToInt(Random.Range(1, rngTile.Value.rarity)) == 1)
+                                {
+                                    tile.type = rngTile;
+                                }
+                            }
+                            if(tile.type.spawnsEntity)
+                            {
+                                Instantiate(tile.type.theEntityItSpawns, tile.transform.position, Quaternion.identity).GetComponent<TileEntity>()?.SpawnAt(x,y);
+                            }
                             break;
                         case 0xE:
                             tile.type = possibleTiles.RWallTile;
