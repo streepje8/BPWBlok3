@@ -14,10 +14,13 @@ public class GameEnemy : TileEntity
     private float moveCooldown = 0f;
     private int tileBudget = 0;
 
+    private float turnSkipCounter = 0f;
+
     public void doTurn()
     {
         GameController.Instance.cameraTarget = transform;
         myTurn = true;
+        turnSkipCounter = 0.5f;
         tileBudget = tilesPerTurn;
     }
 
@@ -72,10 +75,20 @@ public class GameEnemy : TileEntity
                     }
                     break;
                 case GameFase.INTERACT:
-
+                    turnSkipCounter -= Time.deltaTime;
+                    if (turnSkipCounter <= 0f)
+                    {
+                        myTurn = false;
+                        TurnManager.Instance.nextTurn();
+                    }
                     break;
                 case GameFase.ATTACK:
-
+                    turnSkipCounter -= Time.deltaTime;
+                    if (turnSkipCounter <= 0f)
+                    {
+                        myTurn = false;
+                        TurnManager.Instance.nextTurn();
+                    }
                     break;
             }
         }

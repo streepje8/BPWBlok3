@@ -7,7 +7,7 @@ public class Inventory : MonoBehaviour
 {
     public IntReference maxItems;
     public IntReference itemsPerRow;
-    [HideInInspector]public ItemStack[,] items;
+    public ItemStack[,] items;
 
     private void Awake()
     {

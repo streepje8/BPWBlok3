@@ -80,3 +80,6 @@ MonoBehaviour:
   - UseConstant: 1
     ConstantValue: {fileID: 11400000, guid: f729ecef5049cca4ab504a32659d5fc8, type: 2}
     Variable: {fileID: 0}
+  - UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: 011fe5d421ccb8f49be38d15e2f5bf6b, type: 2}
+    Variable: {fileID: 0}

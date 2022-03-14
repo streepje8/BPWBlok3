@@ -7,15 +7,17 @@ public class InventoryManager : MonoBehaviour
 {
     public InventoryReference inventory;
     public GameObjectReference itemDisplayPrefab;
+    public GameObject visual;
     private ItemDisplay[,] itemDisplays;
 
     private void Awake()
     {
+        visual.SetActive(true);
         int x = 0, y = 0;
         itemDisplays = new ItemDisplay[inventory.Value.itemsPerRow, inventory.Value.maxItems / inventory.Value.itemsPerRow];
         for(int i = 0; i < inventory.Value.maxItems; i++)
         {
-            ItemDisplay iD = Instantiate(itemDisplayPrefab.Value,gameObject.transform).GetComponent<ItemDisplay>();
+            ItemDisplay iD = Instantiate(itemDisplayPrefab.Value,visual.transform).GetComponent<ItemDisplay>();
             iD.transform.localPosition = new Vector3(-130 + 40 * x,55 - 40 * y,0);
             itemDisplays[x, y] = iD;
             x++;
@@ -25,11 +27,20 @@ public class InventoryManager : MonoBehaviour
                 y++;
             }
         }
+        visual.SetActive(false);
     }
 
     private void Start()
     {
         UpdateDisplays();
+    }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.E))
+        {
+            visual.SetActive(!visual.activeSelf);
+        }
     }
 
     public void UpdateDisplays()
