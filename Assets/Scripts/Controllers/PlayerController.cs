@@ -11,12 +11,14 @@ public class PlayerController : MonoBehaviour
     public bool isMyTurn = false;
     public float timeBetweenSteps = 0.1f;
     public float deadZone = 0.1f;
+    public MeshRenderer mesh;
 
     [Header("Events")]
     public GameEvent playerTurnStartEvent;
     public GameEvent playerTurnEndEvent;
 
     private float walkCooldown = 0f;
+    private float meshRotation = 0f;
     [HideInInspector]public Vector2Int currentPosition2D;
 
     public void GoToStartingPosition()
@@ -30,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector3 input = new Vector3(Input.GetAxis("Horizontal"),0, Input.GetAxis("Vertical"));
         input = GameController.Instance.dollyParent.rotation * input;
+        mesh.transform.localRotation = Quaternion.Slerp(mesh.transform.localRotation, Quaternion.Euler(Vector3.forward * meshRotation), 10f * Time.deltaTime);
         Debug.DrawLine(transform.position, transform.position + input * 10);
         float Horizontal = input.x;
         float Vertical = input.z;
@@ -44,6 +47,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x + 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(1, 0);
+                            meshRotation = 90f;
                         }
                         walkCooldown = timeBetweenSteps;
                     }
@@ -52,6 +56,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x - 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(-1, 0);
+                            meshRotation = -90f;
                         }
                         walkCooldown = timeBetweenSteps;
                     }
@@ -60,6 +65,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y + 1))
                         {
                             currentPosition2D += new Vector2Int(0, 1);
+                            meshRotation = 0;
                         }
                         walkCooldown = timeBetweenSteps;
                     }
@@ -68,6 +74,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y - 1))
                         {
                             currentPosition2D += new Vector2Int(0, -1);
+                            meshRotation = -180f;
                         }
                         walkCooldown = timeBetweenSteps;
                     }
