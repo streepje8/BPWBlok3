@@ -78,7 +78,10 @@ MonoBehaviour:
     Variable: {fileID: 11400000, guid: 2c924eb2d932fa24e9532bf8b2aec7b7, type: 2}
   DungeonSpecificTiles:
   - UseConstant: 1
-    ConstantValue: {fileID: 11400000, guid: f729ecef5049cca4ab504a32659d5fc8, type: 2}
+    ConstantValue: {fileID: 11400000, guid: e439aa84c113b4347b87c8eaf9e181c7, type: 2}
+    Variable: {fileID: 0}
+  - UseConstant: 1
+    ConstantValue: {fileID: 11400000, guid: d60b36f0fabb5c745a51536e9e278deb, type: 2}
     Variable: {fileID: 0}
   - UseConstant: 1
     ConstantValue: {fileID: 11400000, guid: 011fe5d421ccb8f49be38d15e2f5bf6b, type: 2}

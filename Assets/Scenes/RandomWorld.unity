@@ -490,6 +490,7 @@ MonoBehaviour:
   DistanceFromPlayer: -4
   sensitifity: 500
   followTarget: {fileID: 2059262560}
+  hightOffset: 2
 --- !u!114 &385539670
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -674,7 +675,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 10, y: -10}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &547755731
@@ -766,6 +767,11 @@ MonoBehaviour:
     ConstantValue: {fileID: 4703053949099806800, guid: 3e0044aa8bd94f34c9980b9fdfd37f77, type: 3}
     Variable: {fileID: 0}
   visual: {fileID: 541535409}
+  defaultIcon: {fileID: 2800000, guid: 1f80da2d7d78e5a40a6ee203d373c0be, type: 3}
+  cursorItem:
+    count: 0
+    type: {fileID: 0}
+  cursorSource: {x: 0, y: 0}
 --- !u!1 &564446018
 GameObject:
   m_ObjectHideFlags: 0
@@ -965,6 +971,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 611fdfe99d0aae041a6b7a13c568d260, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 923115c66ce37bb47b40b248dcf38613, type: 2}
     - target: {fileID: 919132149155446097, guid: 611fdfe99d0aae041a6b7a13c568d260, type: 3}
       propertyPath: m_Name
       value: Mesh
@@ -1002,7 +1012,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1204921653}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.101, z: 0}
+  m_LocalPosition: {x: 0, y: 0.01, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1536343633}
@@ -1027,7 +1037,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 4cb4c38b4370d2942a0be071dc8f7ad0, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1623,11 +1633,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxItems:
     UseConstant: 1
-    ConstantValue: 12
+    ConstantValue: 21
     Variable: {fileID: 0}
   itemsPerRow:
     UseConstant: 1
-    ConstantValue: 6
+    ConstantValue: 7
     Variable: {fileID: 0}
 --- !u!1 &1906241018
 GameObject:
@@ -1663,7 +1673,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -10, y: 10}
   m_SizeDelta: {x: 300, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1906241020
@@ -1686,7 +1696,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 0}
+  m_Texture: {fileID: 2800000, guid: 1bb0bce035d37fa4cbd355cbec2e353c, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0

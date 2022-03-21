@@ -1,4 +1,5 @@
 using Openverse.Variables;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,6 +9,7 @@ public class InventoryManager : MonoBehaviour
     public InventoryReference inventory;
     public GameObjectReference itemDisplayPrefab;
     public GameObject visual;
+    public Texture2D defaultIcon;
     private ItemDisplay[,] itemDisplays;
 
     private void Awake()
@@ -30,6 +32,31 @@ public class InventoryManager : MonoBehaviour
         visual.SetActive(false);
     }
 
+    public ItemStack cursorItem;
+    public Vector2Int cursorSource;
+
+    public void ItemToCursor(ItemDisplay itemDisplay)
+    {
+        if (cursorItem == null)
+        {
+            cursorItem = itemDisplay.myItem;
+            cursorSource = new Vector2Int(itemDisplay.x, itemDisplay.y);
+            inventory.Value.items[itemDisplay.x, itemDisplay.y] = null;
+            itemDisplay.myItem = null;
+            itemDisplay.icon.texture = defaultIcon;
+        }
+    }
+
+    public void ItemFromCursor(ItemDisplay itemDisplay)
+    {
+        if(cursorItem != null)
+        {
+            inventory.Value.items[itemDisplay.x, itemDisplay.y] = cursorItem;
+            cursorItem = null;
+            UpdateDisplays();
+        }
+    }
+
     private void Start()
     {
         UpdateDisplays();
@@ -40,6 +67,17 @@ public class InventoryManager : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.E))
         {
             visual.SetActive(!visual.activeSelf);
+            if (visual.activeSelf)
+            {
+                UpdateDisplays();
+            } else
+            {
+                if(cursorItem != null)
+                {
+                    inventory.Value.items[cursorSource.x, cursorSource.y] = cursorItem;
+                    cursorItem = null;
+                }
+            }
         }
     }
 
@@ -50,21 +88,39 @@ public class InventoryManager : MonoBehaviour
             for (int y = 0; y < itemDisplays.GetLength(1); y++)
             {
                 ItemDisplay iD = itemDisplays[x, y];
+                iD.x = x;
+                iD.y = y;
                 if ((x < inventory.Value.items.GetLength(0)) && (y < inventory.Value.items.GetLength(1)))
                 {
                     ItemStack item = inventory.Value.items[x, y];
+                    if(item?.type == null)
+                    {
+                        inventory.Value.items[x, y] = null;
+                        item = null;
+                    }
                     if(item != null) { 
                         iD.enabled = true;
                         iD.icon.texture = item.type.icon;
+                        iD.myItem = item;
                         iD.amountDisplay.text = item.count.ToString();
+                        if(item.count < 2)
+                        {
+                            iD.amountDisplay.gameObject.SetActive(false);
+                        } else
+                        {
+                            iD.amountDisplay.gameObject.SetActive(true);
+                        }
                     } else
                     {
                         iD.enabled = false;
+                        iD.icon.texture = defaultIcon;
+                        iD.amountDisplay.gameObject.SetActive(false);
                     }
                 } else
                 {
                     if(iD != null) { 
                         iD.enabled = true;
+                        iD.amountDisplay.gameObject.SetActive(false);
                     }
                 }
             }
