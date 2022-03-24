@@ -18,7 +18,8 @@ public class ItemDisplay : MonoBehaviour
         {
             if (myItem != null && myItem.type != null)
             {
-                myItem.type.UseItem(GameController.Instance.player.gameObject);
+                if(GameController.Instance.inventory.cursorItem == null)
+                    myItem.type.UseItem(GameController.Instance.player.gameObject);
             } else
             {
                 GameController.Instance.inventory.ItemFromCursor(this);
