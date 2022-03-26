@@ -9,6 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 717a45a402ee3294fa79b6654fdb35c2, type: 3}
-  m_Name: MEHHANDLER
+  m_Script: {fileID: 11500000, guid: 87cb780a92aa9624ebdbbfb09fae06e2, type: 3}
+  m_Name: ShieldHandler
   m_EditorClassIdentifier: 
+  statToChange: 1
+  amount: 10

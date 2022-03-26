@@ -74,10 +74,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d955edc77bf4d49a4f627bbdfa2647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tilesPerTurn: 0
+  tilesPerTurn: 5
   moveToPlayerRadius: 6
   myPosition: {x: 0, y: 0}
   timeBetweenMoves: 0.5
+  staminaPerRound: 2
+  timeBetweenAttacks: 2
+  DamagePerAttack: 4.5
 --- !u!1001 &2720262785710949391
 PrefabInstance:
   m_ObjectHideFlags: 0

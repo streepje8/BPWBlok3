@@ -13,9 +13,14 @@ public class ItemType : ScriptableObject
     public Material material;
     public float value;
     public ItemHandler handler;
+    public void UseItem(ItemDisplay i, GameObject user)
+    {
+        handler?.onUse(i, user);
+    }
+
     public void UseItem(GameObject user)
     {
-        handler?.onUse(user);
+        handler?.onUse(null, user);
     }
 
     internal void Drop(ItemStack itemStack, Vector3 position)

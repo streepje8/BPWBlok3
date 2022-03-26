@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1c6bb75cc233fa649ae3e65eebee33f3, type: 3}
-  m_Name: BruMoment
+  m_Name: HealScroll
   m_EditorClassIdentifier: 
-  type: GreatBru
-  icon: {fileID: 2800000, guid: dffef66376be4fa480fb02b19edbe903, type: 3}
-  mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
-  material: {fileID: 10302, guid: 0000000000000000f000000000000000, type: 0}
-  value: 1
-  handler: {fileID: 11400000, guid: 5830174ad2d06d54195ad1acb504addc, type: 2}
+  type: ScrollOHeal
+  icon: {fileID: 2800000, guid: 43c4ba229080f734ca5f8401265f3265, type: 3}
+  mesh: {fileID: -1514248429855503209, guid: 73779547997645846abb74d0285927e6, type: 3}
+  material: {fileID: 2100000, guid: a1ec5e26bafc2ef4c8f9cd99a93d8dab, type: 2}
+  value: 10
+  handler: {fileID: 11400000, guid: 5a47c96c6defc294b8009d79a76bd350, type: 2}

@@ -8,21 +8,26 @@ public class GameEnemy : TileEntity
     public int moveToPlayerRadius = 4;
     public Vector2Int myPosition = Vector2Int.zero;
     public float timeBetweenMoves = 0.5f;
+    public int staminaPerRound = 2;
+    public float timeBetweenAttacks = 0.5f;
+    public float DamagePerAttack = 4.5f;
     
     private bool myTurn = false;
 
     private float moveCooldown = 0f;
     private int tileBudget = 0;
 
-    private float turnSkipCounter = 0f;
+    private float minTurnDuration = 0f;
 
     private Quaternion myRotation;
+    private int stamina = 0;
+    private float attackTimer = 0f;
 
     public void doTurn()
     {
         GameController.Instance.cameraTarget = transform;
         myTurn = true;
-        turnSkipCounter = 0.5f;
+        minTurnDuration = 0.5f;
         tileBudget = tilesPerTurn;
     }
 
@@ -75,24 +80,45 @@ public class GameEnemy : TileEntity
                     }
                     else
                     {
-                        myTurn = false;
-                        TurnManager.Instance.nextTurn();
+                        minTurnDuration -= Time.deltaTime;
+                        if (minTurnDuration <= 0f)
+                        {
+                            stamina = staminaPerRound;
+                            myTurn = false;
+                            TurnManager.Instance.nextTurn();
+                        }
                     }
                     break;
                 case GameFase.INTERACT:
-                    turnSkipCounter -= Time.deltaTime;
-                    if (turnSkipCounter <= 0f)
+                    minTurnDuration -= Time.deltaTime;
+                    if (minTurnDuration <= 0f)
                     {
                         myTurn = false;
                         TurnManager.Instance.nextTurn();
                     }
                     break;
                 case GameFase.ATTACK:
-                    turnSkipCounter -= Time.deltaTime;
-                    if (turnSkipCounter <= 0f)
+                    if (stamina > 0 && Vector2Int.Distance(myPosition, GameController.Instance.player.currentPosition2D) < 2)
                     {
-                        myTurn = false;
-                        TurnManager.Instance.nextTurn();
+                        if(attackTimer <= 0f)
+                        {
+                            PlayerStats.Instance.DamagePlayer(DamagePerAttack);
+                            transform.rotation *= Quaternion.Euler(Vector3.up * 25f); //animation :>
+                            attackTimer = timeBetweenAttacks;
+                            stamina--;
+                        } else
+                        {
+                            attackTimer -= Time.deltaTime;
+                        }
+                    }
+                    else
+                    {
+                        minTurnDuration -= Time.deltaTime;
+                        if (minTurnDuration <= 0f)
+                        {
+                            myTurn = false;
+                            TurnManager.Instance.nextTurn();
+                        }
                     }
                     break;
             }

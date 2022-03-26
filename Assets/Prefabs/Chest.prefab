@@ -46,9 +46,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   drops:
-  - {fileID: 11400000, guid: 62a9fbb8dda0a58498eb611b2efcea64, type: 2}
-  - {fileID: 11400000, guid: 62a9fbb8dda0a58498eb611b2efcea64, type: 2}
-  dropAmounts: 0100000008000000
+  - {fileID: 11400000, guid: 4470bcf097355aa40a91398d52387b8a, type: 2}
+  - {fileID: 11400000, guid: 4470bcf097355aa40a91398d52387b8a, type: 2}
+  - {fileID: 11400000, guid: 90b3d85035a412b4898d9922e0966d5a, type: 2}
+  - {fileID: 11400000, guid: 90b3d85035a412b4898d9922e0966d5a, type: 2}
+  - {fileID: 11400000, guid: 47e49d4d311f7fe4eba2742839b648d6, type: 2}
+  - {fileID: 11400000, guid: 47e49d4d311f7fe4eba2742839b648d6, type: 2}
+  dropAmounts: 01000000020000000200000004000000040000000a000000
   lastClickedTile:
     UseConstant: 0
     ConstantValue: {x: 0, y: 0}
@@ -136,7 +140,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6536163123703535086, guid: 2b3951842ba99ae49bc684dad4f8857b, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2b3951842ba99ae49bc684dad4f8857b, type: 3}
 --- !u!4 &6015970297271133743 stripped
 Transform:

@@ -57,6 +57,13 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
+    public void DropItem(ItemDisplay itemDisplay)
+    {
+        inventory.Value.items[itemDisplay.x, itemDisplay.y].Drop(GameController.Instance.player.transform.position);
+        inventory.Value.items[itemDisplay.x, itemDisplay.y] = null;
+        UpdateDisplays();
+    }
+
     private void Start()
     {
         UpdateDisplays();
@@ -93,6 +100,10 @@ public class InventoryManager : MonoBehaviour
                 if ((x < inventory.Value.items.GetLength(0)) && (y < inventory.Value.items.GetLength(1)))
                 {
                     ItemStack item = inventory.Value.items[x, y];
+                    if(item?.count <= 0)
+                    {
+                        item = null;
+                    }
                     if(item?.type == null)
                     {
                         inventory.Value.items[x, y] = null;

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
@@ -16,17 +17,35 @@ public class ItemDisplay : MonoBehaviour
     {
         if (!Input.GetKey(KeyCode.LeftShift))
         {
-            if (myItem != null && myItem.type != null)
+            if (!Input.GetKey(KeyCode.LeftControl))
             {
-                if(GameController.Instance.inventory.cursorItem == null)
-                    myItem.type.UseItem(GameController.Instance.player.gameObject);
+                if (myItem != null && myItem.type != null)
+                {
+                    if (GameController.Instance.inventory.cursorItem == null)
+                        myItem.type.UseItem(this, GameController.Instance.player.gameObject);
+                }
+                else
+                {
+                    GameController.Instance.inventory.ItemFromCursor(this);
+                }
             } else
             {
-                GameController.Instance.inventory.ItemFromCursor(this);
+                GameController.Instance.inventory.DropItem(this);
             }
         } else
         {
             GameController.Instance.inventory.ItemToCursor(this);
         }
+    }
+
+    public void ConsumeItem()
+    {
+        myItem.count--;
+        if (myItem.count <= 0)
+        {
+            myItem = null;
+            GameController.Instance.inventory.inventory.Value.items[x, y] = null;
+        }
+        GameController.Instance.inventory.UpdateDisplays();
     }
 }
