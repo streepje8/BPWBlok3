@@ -7,6 +7,15 @@ using UnityEngine;
 public class Savedata : Singleton<Savedata>
 {
     private Dictionary<string, object> saveData = new Dictionary<string, object>();
+    public string filePath = File;
+
+    public static string File =>
+#if UNITY_EDITOR
+            Application.dataPath + "/savefile.dat";
+#else
+        return Application.persistentDataPath + "/savefile.dat";
+#endif
+
 
     private void Awake()
     {
@@ -23,11 +32,6 @@ public class Savedata : Singleton<Savedata>
 
     public void saveAll()
     {
-        string filePath = Application.persistentDataPath + "/savefile.dat";
-#if UNITY_EDITOR
-        filePath = Application.dataPath + "/savefile.dat";
-#endif
-
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(filePath, FileMode.OpenOrCreate);
         bf.Serialize(file, saveData);
@@ -37,10 +41,6 @@ public class Savedata : Singleton<Savedata>
 
     public void loadAll()
     {
-        string filePath = Application.persistentDataPath + "/savefile.dat";
-#if UNITY_EDITOR
-        filePath = Application.dataPath + "/savefile.dat";
-#endif
         if (File.Exists(filePath))
         {
             BinaryFormatter bf = new BinaryFormatter();

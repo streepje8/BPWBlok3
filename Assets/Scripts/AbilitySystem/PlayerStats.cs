@@ -10,6 +10,7 @@ public class PlayerStats : Singleton<PlayerStats>
     public float HP = 20;
     public float shields = 0f;
     public float AddedDamage = 0f;
+    public int stamina = 3;
 
     private void Awake()
     {

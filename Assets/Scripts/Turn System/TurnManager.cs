@@ -7,6 +7,7 @@ using System.Linq;
 public class TurnManager : Singleton<TurnManager>
 {
     public List<GameEvent> turnSubscribed = new List<GameEvent>();
+    public GameEvent onFaseChangeEvent;
     public int currentTurn = -1;
 
     private Dictionary<GameEvent, int>  unsortedTurns = new Dictionary<GameEvent, int>();

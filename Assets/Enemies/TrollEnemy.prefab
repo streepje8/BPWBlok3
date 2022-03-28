@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4974510381622041401}
   - component: {fileID: 4974510381622041405}
   - component: {fileID: 4974510381622041394}
+  - component: {fileID: 3024480756346197630}
   m_Layer: 0
   m_Name: TrollEnemy
   m_TagString: Untagged
@@ -74,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14d955edc77bf4d49a4f627bbdfa2647, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HP: 20
   tilesPerTurn: 5
   moveToPlayerRadius: 6
   myPosition: {x: 0, y: 0}
@@ -81,6 +83,20 @@ MonoBehaviour:
   staminaPerRound: 2
   timeBetweenAttacks: 2
   DamagePerAttack: 4.5
+  RegenFrom: 5
+  RegenAmount: 0.5
+--- !u!114 &3024480756346197630
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974510381622041395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 157e93d0a248ebf479aab0988a9a9f57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2720262785710949391
 PrefabInstance:
   m_ObjectHideFlags: 0

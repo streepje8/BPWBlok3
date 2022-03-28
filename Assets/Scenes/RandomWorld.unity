@@ -1595,9 +1595,9 @@ RectTransform:
   m_Father: {fileID: 250470625}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -785.00006, y: 364.65665}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 175, y: -175}
   m_SizeDelta: {x: 300, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1630031632
@@ -1703,6 +1703,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   turnSubscribed: []
+  onFaseChangeEvent: {fileID: 11400000, guid: 634e6353c0520f547825ad95de4ae180, type: 2}
   currentTurn: 0
 --- !u!4 &1788513021
 Transform:
@@ -1946,11 +1947,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d1c2017f06396438dc9943f8933242, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ActiveAbilities: []
   BaseDamage: 1
   HP: 20
   shields: 0
   AddedDamage: 0
+  stamina: 3
 --- !u!1 &1906241018
 GameObject:
   m_ObjectHideFlags: 0

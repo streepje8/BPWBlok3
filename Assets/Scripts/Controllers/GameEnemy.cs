@@ -11,7 +11,9 @@ public class GameEnemy : TileEntity
     public int staminaPerRound = 2;
     public float timeBetweenAttacks = 0.5f;
     public float DamagePerAttack = 4.5f;
-    
+    public float RegenFrom = 1f;
+    public float RegenAmount = 0.5f;
+
     private bool myTurn = false;
 
     private float moveCooldown = 0f;
@@ -102,9 +104,16 @@ public class GameEnemy : TileEntity
                     {
                         if(attackTimer <= 0f)
                         {
-                            PlayerStats.Instance.DamagePlayer(DamagePerAttack);
-                            transform.rotation *= Quaternion.Euler(Vector3.up * 25f); //animation :>
-                            attackTimer = timeBetweenAttacks;
+                            if (HP > RegenFrom)
+                            {
+                                PlayerStats.Instance.DamagePlayer(DamagePerAttack);
+                                transform.rotation *= Quaternion.Euler(Vector3.up * 25f); //animation :>
+                                attackTimer = timeBetweenAttacks;
+                            } else
+                            {
+                                HP += RegenAmount;
+                                attackTimer = timeBetweenAttacks;
+                            }
                             stamina--;
                         } else
                         {
