@@ -4,12 +4,20 @@ using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
 using UnityEngine;
 
+
+/*
+ * Savedata class
+ * Wessel Roelofse
+ * 30/03/2022
+ * 
+ * Singleton based savedata class
+ */
 public class Savedata : Singleton<Savedata>
 {
     private Dictionary<string, object> saveData = new Dictionary<string, object>();
-    public string filePath = File;
+    public string filePath = SaveFile;
 
-    public static string File =>
+    public static string SaveFile =>
 #if UNITY_EDITOR
             Application.dataPath + "/savefile.dat";
 #else
