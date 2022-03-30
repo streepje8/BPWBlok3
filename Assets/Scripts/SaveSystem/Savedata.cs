@@ -17,16 +17,17 @@ public class Savedata : Singleton<Savedata>
     private Dictionary<string, object> saveData = new Dictionary<string, object>();
     public string filePath = SaveFile;
 
-    public static string SaveFile =>
-#if UNITY_EDITOR
-            Application.dataPath + "/savefile.dat";
-#else
-        return Application.persistentDataPath + "/savefile.dat";
-#endif
-
+    public static string SaveFile;
 
     private void Awake()
     {
+        SaveFile =
+#if UNITY_EDITOR
+            Application.dataPath + "/savefile.dat";
+#else
+        Application.persistentDataPath + "/savefile.dat";
+#endif
+        filePath = SaveFile;
         Instance = this;
         DontDestroyOnLoad(this);
         loadAll();
@@ -40,6 +41,7 @@ public class Savedata : Singleton<Savedata>
 
     public void saveAll()
     {
+        filePath = SaveFile;
         BinaryFormatter bf = new BinaryFormatter();
         FileStream file = File.Open(filePath, FileMode.OpenOrCreate);
         bf.Serialize(file, saveData);

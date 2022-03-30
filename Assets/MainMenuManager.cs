@@ -8,9 +8,15 @@ public class MainMenuManager : MonoBehaviour
 {
     public void New()
     {
-        if(File.Exists(Savedata.File))
+        Savedata.SaveFile =
+#if UNITY_EDITOR
+            Application.dataPath + "/savefile.dat";
+#else
+        Application.persistentDataPath + "/savefile.dat";
+#endif
+        if (File.Exists(Savedata.SaveFile))
         {
-            File.Delete(Savedata.File);
+            File.Delete(Savedata.SaveFile);
         }
         Continue();
     }
