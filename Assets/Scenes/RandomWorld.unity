@@ -1317,6 +1317,9 @@ GameObject:
   m_Component:
   - component: {fileID: 564446020}
   - component: {fileID: 564446019}
+  - component: {fileID: 564446021}
+  - component: {fileID: 564446022}
+  - component: {fileID: 564446023}
   m_Layer: 0
   m_Name: SaveSystem
   m_TagString: Untagged
