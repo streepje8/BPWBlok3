@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 4974510381622041405}
   - component: {fileID: 4974510381622041394}
   - component: {fileID: 3024480756346197630}
-  m_Layer: 0
+  - component: {fileID: 561399020549557888}
+  m_Layer: 8
   m_Name: TrollEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,6 +86,7 @@ MonoBehaviour:
   DamagePerAttack: 4.5
   RegenFrom: 5
   RegenAmount: 0.5
+  ScoreOnDeath: 100
 --- !u!114 &3024480756346197630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,6 +99,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 157e93d0a248ebf479aab0988a9a9f57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &561399020549557888
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4974510381622041395}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1.79, z: 1}
+  m_Center: {x: 0, y: 0.82, z: 0}
 --- !u!1001 &2720262785710949391
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -151,6 +166,10 @@ PrefabInstance:
     - target: {fileID: 5751466080888825209, guid: 62275139a9c501b44941ec7cbc8476ab, type: 3}
       propertyPath: m_Name
       value: TrollEnemyModel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5751466080888825209, guid: 62275139a9c501b44941ec7cbc8476ab, type: 3}
+      propertyPath: m_Layer
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 6111863659023664300, guid: 62275139a9c501b44941ec7cbc8476ab, type: 3}
       propertyPath: m_Materials.Array.data[0]

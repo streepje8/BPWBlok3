@@ -8,7 +8,7 @@ public class TurnSubscriber : GameEventListener
 {
     public int priority = 100;
 
-    private void Awake()
+    private new void Awake()
     {
         if(Event != null)
         {
@@ -16,5 +16,6 @@ public class TurnSubscriber : GameEventListener
         }
         Event = ScriptableObject.CreateInstance<GameEvent>();
         TurnManager.Instance.TurnSubscribe(Event, priority);
+        base.Awake();
     }
 }
