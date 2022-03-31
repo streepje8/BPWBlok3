@@ -12,6 +12,7 @@ public class GameController : Singleton<GameController>
     public Transform dollyParent;
     public InventoryManager inventory;
     public int score = 0;
+    public PlayerStats playerstats;
     public List<ItemType> allItemTypes = new List<ItemType>();
     private List<GameObject> spawnedEntities = new List<GameObject>();
     private Dictionary<int, ItemType> itemTypeBase = new Dictionary<int, ItemType>();
@@ -31,7 +32,6 @@ public class GameController : Singleton<GameController>
 
     public void RegisterItemType(int iD, ItemType itemType)
     {
-        Debug.Log("Item type got registered");
         if(!itemTypeBase.ContainsKey(iD))
         {
             itemTypeBase.Add(iD, itemType);
