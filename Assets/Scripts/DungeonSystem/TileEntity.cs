@@ -9,8 +9,17 @@ public abstract class TileEntity : MonoBehaviour
 
     public abstract void SpawnAt(int x, int y);
 
+    public void RegisterSelf()
+    {
+        GameController.Instance.RegisterEntity(gameObject);
+    }
+
     public void Die()
     {
+        onDeath();
+        GameController.Instance.DeRegisterEntity(gameObject);
         Destroy(gameObject);
     }
+
+    public virtual void onDeath() { }
 }

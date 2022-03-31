@@ -3,11 +3,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Chest : MonoBehaviour
+public class Chest : TileEntity
 {
     public List<ItemType> drops = new List<ItemType>();
     public List<int> dropAmounts = new List<int>();
     public Vector2IntReference lastClickedTile;
+
+    private void Start()
+    {
+        RegisterSelf();
+    }
 
     public void chestTileClickedEvent()
     {
@@ -15,6 +20,11 @@ public class Chest : MonoBehaviour
         {
             onClickedEvent();
         }
+    }
+
+    public override void SpawnAt(int x, int y)
+    {
+        //Do nothing
     }
 
     void onClickedEvent()

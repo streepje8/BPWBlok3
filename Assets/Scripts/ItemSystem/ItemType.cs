@@ -13,6 +13,8 @@ public class ItemType : ScriptableObject
     public Material material;
     public float value;
     public ItemHandler handler;
+    public int ID = 0;
+
     public void UseItem(ItemDisplay i, GameObject user)
     {
         handler?.onUse(i, user);

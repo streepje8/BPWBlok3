@@ -21,6 +21,7 @@ public class DroppedItem : MonoBehaviour, IClickable
         GetComponent<MeshRenderer>().material = stack.type.material;
         endPosition = transform.position;
         transform.Translate(Vector3.up * 2f);
+        GameController.Instance.RegisterEntity(gameObject);
     }
 
     public void onClick()
@@ -31,6 +32,7 @@ public class DroppedItem : MonoBehaviour, IClickable
             {
                 GameController.Instance.inventory.inventory.Value.addItem(stack);
                 GameController.Instance.inventory.UpdateDisplays();
+                GameController.Instance.DeRegisterEntity(gameObject);
                 Destroy(gameObject);
             }
         }

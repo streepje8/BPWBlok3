@@ -1,3 +1,5 @@
+using Openverse.Events;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
@@ -18,6 +20,7 @@ public class Savedata : Singleton<Savedata>
     public string filePath = SaveFile;
 
     public static string SaveFile;
+    public GameEvent dataLoadedEvent;
 
     private void Awake()
     {
@@ -58,6 +61,7 @@ public class Savedata : Singleton<Savedata>
             saveData = (Dictionary<string,object>)bf.Deserialize(file);
             file.Close();
             file.Dispose();
+            dataLoadedEvent?.Raise();
         } else
         {
             saveAll();
@@ -106,6 +110,25 @@ public class Savedata : Singleton<Savedata>
         else
         {
             return 0;
+        }
+    }
+
+    public bool getBool(string path)
+    {
+        if (saveData.ContainsKey(path))
+        {
+            if (saveData[path].GetType() == typeof(bool))
+            {
+                return (bool)saveData[path];
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return false;
         }
     }
 

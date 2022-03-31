@@ -13,6 +13,7 @@ public class GameEnemy : TileEntity
     public float DamagePerAttack = 4.5f;
     public float RegenFrom = 1f;
     public float RegenAmount = 0.5f;
+    public int ScoreOnDeath = 100;
 
     private bool myTurn = false;
 
@@ -139,6 +140,12 @@ public class GameEnemy : TileEntity
         transform.position = Vector3.Lerp(transform.position, new Vector3(myPosition.x, transform.position.y, myPosition.y), 10f * Time.deltaTime);
         //transform.position = new Vector3(myPosition.x, transform.position.y, myPosition.y);
     }
+
+    public override void onDeath()
+    {
+        GameController.Instance.score += ScoreOnDeath;
+    }
+
 
     private void OnDrawGizmosSelected()
     {

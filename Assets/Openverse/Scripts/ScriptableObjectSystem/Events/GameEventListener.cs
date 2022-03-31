@@ -17,10 +17,19 @@ namespace Openverse.Events
 
         [Tooltip("Response to invoke when Event is raised.")]
         public UnityEvent Response;
+        private bool isRegistered = false;
+
+        public void Awake()
+        {
+            Event.RegisterListener(this);
+            isRegistered = true;
+        }
 
         private void OnEnable()
         {
-            Event.RegisterListener(this);
+            if(!isRegistered)
+                Event.RegisterListener(this);
+            isRegistered = false;
         }
 
         private void OnDisable()

@@ -24,20 +24,20 @@ public class RoomGenerator : MonoBehaviour
         GenerateRoom();
     }
 
-    //float temp = 0;
-
-    private void Update()
+    public void nextRoom()
     {
-        //Debug
-        
-        //temp += Time.deltaTime;
-        //if(temp > 0.5)
-        //{
-        //    GenerateRoom();
-        //    Debug.Log("New Room boi");
-        //    temp = 0;
-        //}
-        
+        GameController.Instance.DestroyAllEntities();
+        GameController.Instance.score += 1000;
+        GenerateRoom();
+    }
+
+    public void LoadRoom(float theseed)
+    {
+        bool old = generateSeedOnRoomGeneration;
+        generateSeedOnRoomGeneration = false;
+        seed = theseed;
+        GenerateRoom();
+        generateSeedOnRoomGeneration = old;
     }
 
     public bool isWalkable(int x, int y)
@@ -61,7 +61,8 @@ public class RoomGenerator : MonoBehaviour
         {
             seed = Random.Range(0, 9999f);
         }
-        if(tiles != null) { 
+        Random.InitState(Mathf.RoundToInt(seed));
+        if (tiles != null) { 
             for(int x = 0; x < tiles.GetLength(0); x++)
             {
                 for(int y = 0; y < tiles.GetLength(1); y++)
@@ -112,7 +113,9 @@ public class RoomGenerator : MonoBehaviour
                             }
                             if(tile.type.spawnsEntity)
                             {
-                                Instantiate(tile.type.theEntityItSpawns, tile.transform.position, Quaternion.identity).GetComponent<TileEntity>()?.SpawnAt(x,y);
+                                TileEntity te = Instantiate(tile.type.theEntityItSpawns, tile.transform.position, Quaternion.identity).GetComponent<TileEntity>();
+                                te?.SpawnAt(x, y);
+                                te?.RegisterSelf();
                             }
                             break;
                         case 0xE:

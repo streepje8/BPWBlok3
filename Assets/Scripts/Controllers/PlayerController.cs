@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x + 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(1, 0);
+                            GameController.Instance.roomGenerator.tiles[currentPosition2D.x, currentPosition2D.y].type.walkOnTileEvent?.Raise();
                             meshRotation = 90f;
                         }
                         walkCooldown = timeBetweenSteps;
@@ -56,6 +57,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x - 1, currentPosition2D.y))
                         {
                             currentPosition2D += new Vector2Int(-1, 0);
+                            GameController.Instance.roomGenerator.tiles[currentPosition2D.x, currentPosition2D.y].type.walkOnTileEvent?.Raise();
                             meshRotation = -90f;
                         }
                         walkCooldown = timeBetweenSteps;
@@ -65,6 +67,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y + 1))
                         {
                             currentPosition2D += new Vector2Int(0, 1);
+                            GameController.Instance.roomGenerator.tiles[currentPosition2D.x, currentPosition2D.y].type.walkOnTileEvent?.Raise();
                             meshRotation = 0;
                         }
                         walkCooldown = timeBetweenSteps;
@@ -74,6 +77,7 @@ public class PlayerController : MonoBehaviour
                         if (GameController.Instance.roomGenerator.isWalkableAndFree(currentPosition2D.x, currentPosition2D.y - 1))
                         {
                             currentPosition2D += new Vector2Int(0, -1);
+                            GameController.Instance.roomGenerator.tiles[currentPosition2D.x, currentPosition2D.y].type.walkOnTileEvent?.Raise();
                             meshRotation = -180f;
                         }
                         walkCooldown = timeBetweenSteps;
