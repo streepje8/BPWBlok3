@@ -1,4 +1,5 @@
 using Openverse.Events;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,6 +16,16 @@ public class TurnSubscriber : GameEventListener
             Debug.LogError("The Event Field Of A TurnSubscriber Gets Assigned Automatically. Please Do Not Assign Anything In The Field.");
         }
         Event = ScriptableObject.CreateInstance<GameEvent>();
+        TurnManager.Instance.TurnSubscribe(Event, priority);
+        base.Awake();
+    }
+
+    public void ReSubscribe()
+    {
+        if (Event != null)
+        {
+            Event = ScriptableObject.CreateInstance<GameEvent>();
+        }
         TurnManager.Instance.TurnSubscribe(Event, priority);
         base.Awake();
     }

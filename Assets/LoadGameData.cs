@@ -15,6 +15,7 @@ public class LoadGameData : MonoBehaviour
     public void prepareMove()
     {
         Invoke("LoadMoveData", 0.5f);
+        //LoadMoveData();
     }
 
     void LoadMoveData()

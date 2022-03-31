@@ -42,6 +42,11 @@ public class TurnManager : Singleton<TurnManager>
         nextTurn();
     }
 
+    public void RemoveAllTurns()
+    {
+        unsortedTurns = new Dictionary<GameEvent, int>();
+    }
+
     void Awake()
     {
         Instance = this;

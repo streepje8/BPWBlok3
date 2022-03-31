@@ -28,7 +28,6 @@ public class GameEnemy : TileEntity
 
     public void doTurn()
     {
-        Debug.Log("AYO");
         GameController.Instance.cameraTarget = transform;
         myTurn = true;
         minTurnDuration = 0.5f;

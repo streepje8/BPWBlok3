@@ -57,7 +57,9 @@ public class GameController : Singleton<GameController>
 
     public void DestroyAllEntities()
     {
-        foreach(GameObject entity in spawnedEntities)
+        TurnManager.Instance.RemoveAllTurns();
+        player.GetComponent<TurnSubscriber>().ReSubscribe();
+        foreach (GameObject entity in spawnedEntities)
         {
             Destroy(entity);
         }
