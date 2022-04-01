@@ -35,6 +35,8 @@ public class LoadGameData : MonoBehaviour
     {
         if (Savedata.Instance.getBool("player.savedData")) {
             GameController.Instance.score = Savedata.Instance.getInt("player.score");
+            GameController.Instance.playerstats.HP = Savedata.Instance.getFloat("player.health");
+            GameController.Instance.playerstats.shields = Savedata.Instance.getFloat("player.shield");
             GameController.Instance.DestroyAllEntities();
             GameController.Instance.roomGenerator.LoadRoom(Savedata.Instance.getFloat("player.seed"));
             GameController.Instance.player.currentPosition2D = new Vector2Int(Savedata.Instance.getInt("player.position.x"), Savedata.Instance.getInt("player.position.y"));
@@ -58,6 +60,8 @@ public class LoadGameData : MonoBehaviour
         Savedata.Instance.save("player.seed", GameController.Instance.roomGenerator.seed);
         Savedata.Instance.save("player.position.x", GameController.Instance.player.currentPosition2D.x);
         Savedata.Instance.save("player.position.y", GameController.Instance.player.currentPosition2D.y);
+        Savedata.Instance.save("player.health", GameController.Instance.playerstats.HP);
+        Savedata.Instance.save("player.shield", GameController.Instance.playerstats.shields);
         for (int x = 0; x < GameController.Instance.inventory.inventory.Value.items.GetLength(0); x++)
         {
             for (int y = 0; y < GameController.Instance.inventory.inventory.Value.items.GetLength(1); y++)
