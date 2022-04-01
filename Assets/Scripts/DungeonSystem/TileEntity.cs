@@ -25,6 +25,10 @@ public abstract class TileEntity : MonoBehaviour
     {
         onDeath();
         GameController.Instance.DeRegisterEntity(gameObject);
+        if(GetComponent<TurnSubscriber>() != null)
+        {
+            GetComponent<TurnSubscriber>().Unsubscribe();
+        }
         Destroy(gameObject);
         GameController.Instance.UpdateEndTile();
     }

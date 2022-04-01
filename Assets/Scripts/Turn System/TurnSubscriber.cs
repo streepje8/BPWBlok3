@@ -20,20 +20,21 @@ public class TurnSubscriber : GameEventListener
     {
         if(Event != null)
         {
-            Debug.LogError("The Event Field Of A TurnSubscriber Gets Assigned Automatically. Please Do Not Assign Anything In The Field.");
+            Debug.LogWarning("The Event Field Of A TurnSubscriber Gets Assigned Automatically. Please Do Not Assign Anything In The Field.");
         }
         Event = ScriptableObject.CreateInstance<GameEvent>();
         TurnManager.Instance.TurnSubscribe(Event, priority);
         base.Awake();
     }
 
+    public void Unsubscribe()
+    {
+        Debug.Log("ERM");
+        TurnManager.Instance.Unsubscribe(Event);
+    }
+
     public void ReSubscribe()
     {
-        if (Event != null)
-        {
-            Event = ScriptableObject.CreateInstance<GameEvent>();
-        }
-        TurnManager.Instance.TurnSubscribe(Event, priority);
-        base.Awake();
+        Awake();
     }
 }
