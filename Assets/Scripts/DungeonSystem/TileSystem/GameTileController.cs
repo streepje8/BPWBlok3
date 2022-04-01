@@ -6,7 +6,7 @@ public class GameTileController : MonoBehaviour
 {
     public GameTile type;
     public byte NeighborCode;
-    private Material myMaterial;
+    [HideInInspector]public Material myMaterial;
 
     [HideInInspector]public bool containsEntity = false;
 

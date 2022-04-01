@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerStats : Singleton<PlayerStats>
 {
@@ -70,7 +72,11 @@ public class PlayerStats : Singleton<PlayerStats>
 
     public void Die()
     {
-
+        if (File.Exists(Savedata.SaveFile))
+        {
+            File.Delete(Savedata.SaveFile);
+        }
+        SceneManager.LoadScene(2);
     }
 }
 

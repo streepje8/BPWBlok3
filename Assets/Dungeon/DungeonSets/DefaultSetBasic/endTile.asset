@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c422a77f9ec32194c81e3d9a462b837c, type: 3}
   m_Name: endTile
   m_EditorClassIdentifier: 
-  texture: {fileID: 2800000, guid: 4bc1b618126584243bc9e8e19f806a86, type: 3}
+  texture: {fileID: 2800000, guid: dc87b2e161420084284479fae67f7b97, type: 3}
   clickOnTileEvent: {fileID: 0}
   walkOnTileEvent: {fileID: 11400000, guid: 2e01b1c28311be440bafda0eb076e3d4, type: 2}
   rarity: 0

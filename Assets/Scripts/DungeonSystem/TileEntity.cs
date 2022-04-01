@@ -19,6 +19,7 @@ public abstract class TileEntity : MonoBehaviour
         onDeath();
         GameController.Instance.DeRegisterEntity(gameObject);
         Destroy(gameObject);
+        GameController.Instance.UpdateEndTile();
     }
 
     public virtual void onDeath() { }

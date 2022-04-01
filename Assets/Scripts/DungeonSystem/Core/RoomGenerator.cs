@@ -158,6 +158,7 @@ public class RoomGenerator : MonoBehaviour
         tiles[startTile.x, startTile.y].type = possibleTiles.StartTile;
         startingPosition.Value = new Vector3(startTile.x, 0, startTile.y);
         Vector2Int endTile = generator.GetEndTile(tiles);
+        endingPosition.Value = new Vector3(endTile.x, 0, endTile.y);
         tiles[endTile.x, endTile.y].type = possibleTiles.EndTile;
         roomGenerated.Raise();
     }

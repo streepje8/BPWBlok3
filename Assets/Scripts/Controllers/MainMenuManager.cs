@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuManager : MonoBehaviour
 {
-    public void New()
+    public Button continueButton;
+
+    private void Start()
     {
         Savedata.SaveFile =
 #if UNITY_EDITOR
@@ -14,6 +17,10 @@ public class MainMenuManager : MonoBehaviour
 #else
         Application.persistentDataPath + "/savefile.dat";
 #endif
+        continueButton.interactable = File.Exists(Savedata.SaveFile);
+    }
+    public void New()
+    {
         if (File.Exists(Savedata.SaveFile))
         {
             File.Delete(Savedata.SaveFile);

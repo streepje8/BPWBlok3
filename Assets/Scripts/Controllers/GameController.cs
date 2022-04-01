@@ -1,7 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameController : Singleton<GameController>
 {
@@ -14,9 +16,10 @@ public class GameController : Singleton<GameController>
     public int score = 0;
     public PlayerStats playerstats;
     public List<ItemType> allItemTypes = new List<ItemType>();
+    public Texture2D ActiveEndTile;
     private List<GameObject> spawnedEntities = new List<GameObject>();
     private Dictionary<int, ItemType> itemTypeBase = new Dictionary<int, ItemType>();
-
+    
     private void Start()
     {
         foreach(ItemType type in allItemTypes)
@@ -28,6 +31,25 @@ public class GameController : Singleton<GameController>
     public void RegisterEntity(GameObject go)
     {
         spawnedEntities.Add(go);
+    }
+
+    public void WalkOnEndTile()
+    {
+        if(canFinish())
+            roomGenerator.nextRoom();
+    }
+
+    public bool canFinish()
+    {
+        bool canFinish = true;
+        foreach (GameObject go in spawnedEntities)
+        {
+            if (go.GetComponent<GameEnemy>() != null)
+            {
+                canFinish = false;
+            }
+        }
+        return canFinish;
     }
 
     public void RegisterItemType(int iD, ItemType itemType)
@@ -80,5 +102,11 @@ public class GameController : Singleton<GameController>
     public void Quit()
     {
         Application.Quit();
+    }
+
+    public void UpdateEndTile()
+    {
+        Vector2Int endTile = new Vector2Int(Mathf.RoundToInt(roomGenerator.endingPosition.Value.x), Mathf.RoundToInt(roomGenerator.endingPosition.Value.z));
+        roomGenerator.tiles[endTile.x, endTile.y].GetComponent<GameTileController>().myMaterial.SetTexture("_MainTex", canFinish() ? ActiveEndTile : roomGenerator.possibleTiles.EndTile.Value.texture);
     }
 }
