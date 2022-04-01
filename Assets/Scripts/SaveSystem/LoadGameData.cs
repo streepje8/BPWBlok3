@@ -14,20 +14,31 @@ public class LoadGameData : MonoBehaviour
 {
     public GameEvent LoadDataReadyEvent;
 
+    private float loadIN = 0.5f;
+    public bool canLoad = false;
+
     public void Start()
     {
-        moveData();
+        prepareMove();
+        loadIN = 0.5f;
+    }
+
+    private void Update()
+    {
+        if (canLoad)
+        {
+            loadIN -= Time.deltaTime;
+            if (loadIN <= 0)
+            {
+                canLoad = false;
+                LoadDataReadyEvent.Raise();
+            }
+        }
     }
 
     public void prepareMove()
     {
-        Invoke("LoadMoveData", 0.5f);
-        //LoadMoveData();
-    }
-
-    void LoadMoveData()
-    {
-        LoadDataReadyEvent?.Raise();
+        canLoad = true;
     }
 
     //Loads the savedata to the correct places in the game
