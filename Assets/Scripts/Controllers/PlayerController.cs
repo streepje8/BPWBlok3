@@ -100,7 +100,6 @@ public class PlayerController : MonoBehaviour
 
                 break;
             case GameFase.ATTACK:
-                GameController.Instance.playerstats.stamina = 3;
                 break;
         }
         transform.position = Vector3.Lerp(transform.position, new Vector3(currentPosition2D.x, transform.position.y, currentPosition2D.y), 10f * Time.deltaTime);
@@ -109,6 +108,7 @@ public class PlayerController : MonoBehaviour
     public void onTurn()
     {
         isMyTurn = true;
+        GameController.Instance.playerstats.stamina = 4;
         GameController.Instance.cameraTarget = transform;
         playerTurnStartEvent?.Raise();
     }

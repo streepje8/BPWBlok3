@@ -52,6 +52,16 @@ public class Savedata : Singleton<Savedata>
         file.Dispose();
     }
 
+    private bool ready = false;
+    private void Update()
+    {
+        if(ready)
+        {
+            dataLoadedEvent?.Raise();
+            ready = false;
+        }
+    }
+
     public void loadAll()
     {
         if (File.Exists(filePath))
@@ -61,11 +71,11 @@ public class Savedata : Singleton<Savedata>
             saveData = (Dictionary<string,object>)bf.Deserialize(file);
             file.Close();
             file.Dispose();
-            dataLoadedEvent?.Raise();
         } else
         {
             saveAll();
         }
+        ready = true;
     }
 
     public void save(string path, System.Object data)

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using System;
 
 
 /*
@@ -23,11 +24,16 @@ public class TurnManager : Singleton<TurnManager>
     public void TurnSubscribe(GameEvent onTurn, int priority)
     {
         unsortedTurns.Add(onTurn, priority);
+        ResetTurnManager();
     }
 
     public void nextTurn()
     {
         currentTurn++;
+        if (currentTurn > turnSubscribed.Count)
+        {
+            currentTurn = 0;
+        }
         if (currentTurn < turnSubscribed.Count)
         {
             turnSubscribed[currentTurn]?.Raise();
@@ -39,8 +45,19 @@ public class TurnManager : Singleton<TurnManager>
         }
     }
 
+    public void Unsubscribe(GameEvent theEvent)
+    {
+        unsortedTurns.Remove(theEvent);
+        turnSubscribed.Remove(theEvent);
+        if(currentTurn > turnSubscribed.Count)
+        {
+            currentTurn = 0;
+        }
+    }
+
     public void ResetTurnManager()
     {
+        turnSubscribed = new List<GameEvent>();
         IOrderedEnumerable<KeyValuePair<GameEvent, int>> sorted = from entry in unsortedTurns orderby entry.Value ascending select entry;
         foreach (KeyValuePair<GameEvent, int> evI in sorted)
         {
@@ -53,6 +70,7 @@ public class TurnManager : Singleton<TurnManager>
     public void RemoveAllTurns()
     {
         unsortedTurns = new Dictionary<GameEvent, int>();
+        turnSubscribed = new List<GameEvent>();
     }
 
     void Awake()
