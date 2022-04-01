@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
+/*
+ * HPDisplay
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Health Display
+ */
 [RequireComponent(typeof(TMP_Text))]
 public class HPDisplay : MonoBehaviour
 {

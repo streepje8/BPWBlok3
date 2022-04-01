@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * LogoAnimator
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * LogoAnimator
+ */
 public class LOGOAnimator : MonoBehaviour
 {
     public float yoffset = 1f;

@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * DungeonGenerator
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A scriptable object base to write your own dungeon generator.
+ */
 public abstract class DungeonGenerator : ScriptableObject
 {
     [HideInInspector] public float seed;

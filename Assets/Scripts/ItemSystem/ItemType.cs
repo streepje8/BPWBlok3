@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/*
+ * ItemType
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * The base definition of an item
+ */
 [CreateAssetMenu(fileName = "NewItemType",menuName = "Item/Type")]
 public class ItemType : ScriptableObject
 {

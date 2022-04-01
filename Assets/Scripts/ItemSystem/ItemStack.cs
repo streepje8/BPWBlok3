@@ -4,6 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
+/*
+ * ItemStack
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * This class keeps track of an itemstack on runtime
+ */
 [Serializable]
 public class ItemStack
 {

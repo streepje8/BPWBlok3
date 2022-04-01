@@ -5,6 +5,14 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
+/*
+ * GameController
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * The main script that contains all the cross references required to control the game.
+ */
 public class GameController : Singleton<GameController>
 {
     public RoomGenerator roomGenerator;

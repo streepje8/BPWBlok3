@@ -4,6 +4,14 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
+
+/*
+ * TurnManager
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Manages who's turn it is
+*/
 public class TurnManager : Singleton<TurnManager>
 {
     public List<GameEvent> turnSubscribed = new List<GameEvent>();

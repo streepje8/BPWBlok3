@@ -5,6 +5,13 @@ using System.IO;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/*
+ * PlayerStats
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A singleton that handles the player their stats
+ */
 public class PlayerStats : Singleton<PlayerStats>
 {
     public List<RuntimeAbility> ActiveAbilities = new List<RuntimeAbility>();

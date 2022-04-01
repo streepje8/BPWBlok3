@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * LoadGameData
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Loads the game data from the SaveData to their variables
+ */
 public class LoadGameData : MonoBehaviour
 {
     public GameEvent LoadDataReadyEvent;

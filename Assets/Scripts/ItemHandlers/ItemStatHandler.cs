@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * ItemStatHandler
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * An ItemHanlder that handles items that influence the player's stats.
+ */
+
 public enum ChangeableStats
 {
     Health,

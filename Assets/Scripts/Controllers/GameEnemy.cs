@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * GameEnemy
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script that controls the enemies in the game.
+ */
 public class GameEnemy : TileEntity
 {
     public int tilesPerTurn = 10;

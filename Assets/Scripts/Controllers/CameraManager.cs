@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * CameraManager
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script that manages the camera
+ */
 public class CameraManager : MonoBehaviour
 {
     public float DistanceFromPlayer = 3f;

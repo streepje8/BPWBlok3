@@ -3,6 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
+
+/*
+ * ScoreDisplay
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Score Display
+ */
 [RequireComponent(typeof(TMP_Text))]
 public class ScoreDisplay : MonoBehaviour
 {

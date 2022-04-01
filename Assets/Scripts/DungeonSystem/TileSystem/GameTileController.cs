@@ -2,6 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * GameTileController
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script that controles the game tiles on runtime
+ */
 public class GameTileController : MonoBehaviour
 {
     public GameTile type;

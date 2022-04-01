@@ -5,6 +5,13 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+/*
+ * ItemDisplay
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Display's an item in the inventory
+ */
 public class ItemDisplay : MonoBehaviour
 {
     public RawImage icon;

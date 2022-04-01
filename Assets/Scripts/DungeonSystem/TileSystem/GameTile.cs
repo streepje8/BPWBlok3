@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * GameTile
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * The definition of a gametile scirptable object
+ */
 [CreateAssetMenu(fileName = "NewGameTile", menuName = "Dungeon/GameTile")]
 public class GameTile : ScriptableObject
 {

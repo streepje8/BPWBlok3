@@ -1,3 +1,10 @@
+/*
+ * TileShader
+ * Wessel Roelofse
+ * 01/04/2022
+ *
+ * Just another unlit shader i used for the tiles
+ */
 Shader "Unlit/TileShader"
 {
     Properties

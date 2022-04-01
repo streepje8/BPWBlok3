@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * DroppedItem
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script to control dropped items in the game scene.
+*/
 [RequireComponent(typeof(MeshRenderer))]
 [RequireComponent(typeof(MeshFilter))]
 [RequireComponent(typeof(BoxCollider))]

@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * SpeedAbility
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * An Ability that increases the speed of the player
+*/
 [CreateAssetMenu(menuName = "Abilities/Speed", order = 100)]
 public class SpeedAbility : Ability
 {

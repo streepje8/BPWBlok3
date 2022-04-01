@@ -5,6 +5,14 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
+/*
+ * MainMenuManager
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script that controls the main menu.
+ */
 public class MainMenuManager : MonoBehaviour
 {
     public Button continueButton;

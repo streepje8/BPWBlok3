@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * ClickRaycaster
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Makes the tile clicked events and IClickable work
+ */
 [RequireComponent(typeof(Camera))]
 public class ClickRaycaster : MonoBehaviour
 {

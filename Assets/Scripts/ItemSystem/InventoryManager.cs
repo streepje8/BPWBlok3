@@ -4,6 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * InventoryManager
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * This script manages the inventory and the itemdisplays within
+ */
 public class InventoryManager : MonoBehaviour
 {
     public InventoryReference inventory;

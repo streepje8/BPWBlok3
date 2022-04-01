@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * FollowTarget
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script makes an object follow another object
+ */
 public class FollowTarget : MonoBehaviour
 {
     public Transform target;

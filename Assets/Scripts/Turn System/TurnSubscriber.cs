@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+/*
+ * TurnSubscriber
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Subscribes a function of this gameobject to the TurnManager
+ */
 public class TurnSubscriber : GameEventListener
 {
     public int priority = 100;

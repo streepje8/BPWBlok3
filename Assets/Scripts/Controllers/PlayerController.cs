@@ -4,6 +4,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * PlayerController
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * The script that allows the player to control the game via their avatar
+ */
 public class PlayerController : MonoBehaviour
 {
     [Header("Variables")]

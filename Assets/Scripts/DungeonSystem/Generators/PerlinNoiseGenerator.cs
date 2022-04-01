@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * PerlinNoiseGenerator
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A DungeonGenerator that uses Perlin Noise to generate a dungeon.
+*/
 [CreateAssetMenu(fileName = "NewDungeonGenerator", menuName = "Dungeon/Generators/PerlinNoiseGenerator")]
 public class PerlinNoiseGenerator : DungeonGenerator
 {

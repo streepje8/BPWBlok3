@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * Attackable
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * Handles player attacks using IClickable
+ */
 [RequireComponent(typeof(TileEntity))]
 [RequireComponent(typeof(BoxCollider))]
 public class Attackable : MonoBehaviour,IClickable

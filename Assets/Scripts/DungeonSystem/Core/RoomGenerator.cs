@@ -5,6 +5,13 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/*
+ * RoomGenerator
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * The script that generates the floors using a DungeonGenerator.
+*/
 public class RoomGenerator : MonoBehaviour
 {
     public GameEvent roomGenerated;

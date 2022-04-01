@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Inventory
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * This class keeps track of items and defines the size of the inventory
+ */
 public class Inventory : MonoBehaviour
 {
     public IntReference maxItems;

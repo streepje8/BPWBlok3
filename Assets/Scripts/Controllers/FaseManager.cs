@@ -2,6 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * FaseManager
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A script that manages what fase the game currently is in.
+ */
 public enum GameFase
 {
     WALK,

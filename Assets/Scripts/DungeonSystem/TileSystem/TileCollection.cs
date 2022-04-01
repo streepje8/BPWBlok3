@@ -3,6 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+/*
+ * TileCollection
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A collection of tiles that defines a dungeon floor
+ */
 [CreateAssetMenu(fileName = "NewGameTileReference", menuName = "Dungeon/TileCollection")]
 public class TileCollection : ScriptableObject
 {

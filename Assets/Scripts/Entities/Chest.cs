@@ -3,6 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/*
+ * Chest
+ * Wessel Roelofse
+ * 01/04/2022
+ * 
+ * A TileEntity script that controls chests
+ */
 public class Chest : TileEntity
 {
     public List<ItemType> drops = new List<ItemType>();
