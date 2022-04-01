@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c6bb75cc233fa649ae3e65eebee33f3, type: 3}
+  m_Name: HealScroll
+  m_EditorClassIdentifier: 
+  type: ScrollOHeal
+  icon: {fileID: 2800000, guid: 43c4ba229080f734ca5f8401265f3265, type: 3}
+  mesh: {fileID: -1514248429855503209, guid: 73779547997645846abb74d0285927e6, type: 3}
+  material: {fileID: 2100000, guid: a1ec5e26bafc2ef4c8f9cd99a93d8dab, type: 2}
+  value: 10
+  handler: {fileID: 11400000, guid: 5a47c96c6defc294b8009d79a76bd350, type: 2}
